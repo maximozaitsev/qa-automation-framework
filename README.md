@@ -77,6 +77,13 @@ pytest --alluredir=allure-results
 allure serve allure-results
 ```
 
+## CI
+
+GitHub Actions runs the full suite on every push and uploads results:
+
+- Live **Allure report** → [`https://maximozaitsev.github.io/qa-automation-framework/`](https://maximozaitsev.github.io/qa-automation-framework/)
+- `allure-results/` artifacts from each run are attached to the **Actions** tab.
+
 ## Design decisions worth noting
 
 - **Page Object Model** keeps selectors and page logic out of test files —

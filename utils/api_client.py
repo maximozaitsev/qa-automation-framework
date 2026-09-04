@@ -14,8 +14,6 @@ class ApiClient:
 
     def get(self, path: str, **kwargs) -> requests.Response:
         return self.session.get(f"{self.base_url}{path}", **kwargs)
-
-    def post(self, path: str, json: dict, **kwargs) -> requests.Response:
         return self.session.post(f"{self.base_url}{path}", json=json, **kwargs)
 
     def put(self, path: str, json: dict, **kwargs) -> requests.Response:

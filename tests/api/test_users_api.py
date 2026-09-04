@@ -33,6 +33,19 @@ class TestUsersApi:
                 assert field in body, f"Missing field '{field}' in response"
             assert body["id"] == 2
 
+    @allure.title("GET user list returns 200 with pagination metadata")
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_get_user_list(self, api):
+        with allure.step("Request the second page of users"):
+            response = api.get("/users", params={"page": 2})
+
+        with allure.step("Verify status code and list metadata"):
+            assert response.status_code == 200
+            body = response.json()
+            assert body["page"] == 2
+            assert len(body["data"]) > 0
+            assert body["total_pages"] >= body["page"]
+
     @allure.title("GET a non-existent user returns 404")
     @allure.severity(allure.severity_level.NORMAL)
     def test_get_user_not_found(self, api):
