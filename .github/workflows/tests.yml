@@ -47,6 +47,9 @@ jobs:
     runs-on: ubuntu-latest
     # Only deploy on pushes to the default branch so PRs don't overwrite the live report.
     if: github.event_name == 'push'
+    permissions:
+      contents: write
+      pages: write
 
     steps:
       - name: Checkout
