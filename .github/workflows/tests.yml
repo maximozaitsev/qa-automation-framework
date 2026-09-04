@@ -74,9 +74,34 @@ jobs:
       - if: always()
         run: npm install -g allure-commandline --unsafe-perm=true
 
+      - name: Restore Allure history cache
+        if: always()
+        uses: actions/cache@v4
+        with:
+          path: allure-results/history
+          key: allure-history-${{ github.sha }}
+          restore-keys: |
+            allure-history-
+
       - name: Generate static report
         if: always()
-        run: allure generate allure-results -o allure-report --clean || echo "::warning::Allure generation failed or produced empty output"
+        run: allure generate --name "Run ${{ github.sha }}" allure-results -o allure-report --clean || echo "::warning::Allure generation failed or produced empty output"
+
+      - name: Save Allure history cache
+        if: always()
+        uses: actions/cache@v4
+        with:
+          path: allure-results/history
+          key: allure-history-${{ github.sha }}
+
+      - name: Upload Allure report
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: allure-html-report
+          path: allure-report/
+          if-no-files-found: warn
+          retention-days: 30
 
       - name: Deploy to GitHub Pages
         if: always() && github.event_name == 'push' && hashFiles('allure-report/index.html') != ''
