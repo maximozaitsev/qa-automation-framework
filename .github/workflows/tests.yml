@@ -45,8 +45,10 @@ jobs:
   deploy-report:
     needs: test
     runs-on: ubuntu-latest
-    # Only deploy on pushes to the default branch so PRs don't overwrite the live report.
-    if: github.event_name == 'push'
+    # Always build Allure report even when `test` has failures, so that
+    # failing tests (incl. intentionally-broken demo tests) still appear in
+    # the published report.
+    if: always() && github.event_name == 'push'
     permissions:
       contents: write
       pages: write

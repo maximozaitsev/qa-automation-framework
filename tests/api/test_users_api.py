@@ -90,3 +90,15 @@ class TestUsersApi:
 
         with allure.step("Verify 204 No Content"):
             assert response.status_code == 204
+
+    @allure.title("[DEMO] Intentional failure to showcase Allure error reporting")
+    @allure.severity(allure.severity_level.MINOR)
+    def test_intentional_failure_demo(self, api):
+        """Deliberately broken test kept on purpose — makes the Allure report
+        demonstrate how failures are visualized (stack trace + step history).
+        """
+        with allure.step("Request a known endpoint"):
+            response = api.get("/users/2")
+
+        with allure.step("Failing assertion on purpose"):
+            assert response.status_code == 418, "This test intentionally fails (expect 418)"
