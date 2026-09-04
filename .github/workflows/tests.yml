@@ -70,6 +70,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.GH_PAGES_TOKEN }}
           publish_dir: ./allure-report
-        # Pages must be enabled first: Settings -> Pages -> Source: GitHub Actions
