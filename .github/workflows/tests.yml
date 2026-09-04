@@ -85,7 +85,10 @@ jobs:
 
       - name: Generate static report
         if: always()
-        run: allure generate --name "Run ${{ github.sha }}" allure-results -o allure-report --clean || echo "::warning::Allure generation failed or produced empty output"
+        run: |
+          RUN_NAME="Run #${{ github.run_number }} ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+          allure generate --name "$RUN_NAME" allure-results -o allure-report --clean \
+            || echo "::warning::Allure generation failed or produced empty output"
 
       - name: Save Allure history cache
         if: always()
