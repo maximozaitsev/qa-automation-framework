@@ -86,9 +86,17 @@ jobs:
       - name: Generate static report
         if: always()
         run: |
-          RUN_NAME="Run #${{ github.run_number }} ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+          RUN_NAME="Run #${{ github.run_number }} ($(date -u +%Y-%m-%d-%H:%M-%Z))"
           allure generate --name "$RUN_NAME" allure-results -o allure-report --clean \
             || echo "::warning::Allure generation failed or produced empty output"
+
+      - name: Persist Allure history for next run
+        if: always()
+        run: |
+          mkdir -p allure-results/history
+          if [ -d allure-report/history ]; then
+            cp -r allure-report/history/* allure-results/history/
+          fi
 
       - name: Save Allure history cache
         if: always()
