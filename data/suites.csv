@@ -1,39 +1,39 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
 "
-        Fetching page=2 of the user list should return HTTP 200, contain
-        at least one user, and report pagination metadata consistent
-        with the requested page.
-        ","160","GET user list returns 200 with pagination metadata","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
-"","89","DELETE removes a user and returns 204","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
-"
         Invalid credentials (wrong password, non-existent user, or empty
         fields) must always be rejected with an error message.
-        ","233","Invalid credentials are rejected: standard_user","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
-"Deliberately broken test kept on purpose — makes the Allure report
-        demonstrate how failures are visualized (stack trace + step history).
-        ","15","[DEMO] Intentional failure to showcase Allure error reporting","tests.api","2026-09-04","failed","2026-09-04","TestUsersApi","test_users_api","",""
-"
-        Invalid credentials (wrong password, non-existent user, or empty
-        fields) must always be rejected with an error message.
-        ","248","Invalid credentials are rejected: ","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
-"
-        Fetching an existing user (id=2) should return HTTP 200 with a
-        payload containing the required fields and a matching id.
-        ","405","GET single user returns 200 and the expected schema","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
-"","373","Adding an item updates the cart badge count","tests.ui","2026-09-04","passed","2026-09-04","TestCart","test_cart","",""
-"","389","Adding two items and removing one leaves the correct count","tests.ui","2026-09-04","passed","2026-09-04","TestCart","test_cart","",""
-"
-        Invalid credentials (wrong password, non-existent user, or empty
-        fields) must always be rejected with an error message.
-        ","230","Invalid credentials are rejected: not_a_real_user","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
-"","87","PUT updates an existing user and returns 200","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+        ","350","Invalid credentials are rejected: ","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
 "
         A locked-out user should be blocked from logging in and receive
         an error message mentioning the account is locked out.
-        ","244","Locked-out user sees an explicit error message","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
+        ","311","Locked-out user sees an explicit error message","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
 "
         As a standard user, when I enter valid credentials and click Login,
         the inventory page should be displayed.
-        ","291","Standard user can log in and lands on the inventory page","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
-"","87","POST creates a new user and returns 201 with an id","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
-"","174","GET a non-existent user returns 404","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+        ","367","Standard user can log in and lands on the inventory page","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
+"","151","DELETE removes a user and returns 204","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"","250","POST creates a new user and returns 201 with an id","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"","175","PUT updates an existing user and returns 200","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"","255","GET a non-existent user returns 404","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"
+        Invalid credentials (wrong password, non-existent user, or empty
+        fields) must always be rejected with an error message.
+        ","333","Invalid credentials are rejected: standard_user","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
+"
+        Fetching an existing user (id=2) should return HTTP 200 with a
+        payload containing the required fields and a matching id.
+        ","345","GET single user returns 200 and the expected schema","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"Deliberately broken test kept on purpose — makes the Allure report
+        demonstrate how failures are visualized (stack trace + step history).
+        ","37","[DEMO] Intentional failure to showcase Allure error reporting","tests.api","2026-09-04","failed","2026-09-04","TestUsersApi","test_users_api","",""
+"
+        Fetching page=2 of the user list should return HTTP 200, contain
+        at least one user, and report pagination metadata consistent
+        with the requested page.
+        ","251","GET user list returns 200 with pagination metadata","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"
+        Invalid credentials (wrong password, non-existent user, or empty
+        fields) must always be rejected with an error message.
+        ","348","Invalid credentials are rejected: not_a_real_user","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
+"","471","Adding two items and removing one leaves the correct count","tests.ui","2026-09-04","passed","2026-09-04","TestCart","test_cart","",""
+"","534","Adding an item updates the cart badge count","tests.ui","2026-09-04","passed","2026-09-04","TestCart","test_cart","",""
