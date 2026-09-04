@@ -35,7 +35,8 @@ jobs:
           pytest --alluredir=allure-results --clean-alluredir
 
       - name: Upload Allure results
-        uses: actions/upload-artifact@v4
+        if: always()
+        uses: actions/upload-artifact@v5
         with:
           name: allure-results
           path: allure-results/
@@ -58,22 +59,27 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download Allure results
-        uses: actions/download-artifact@v4
+        if: always()
+        uses: actions/download-artifact@v5
         with:
           name: allure-results
           path: allure-results
 
       - name: Install Node + Allure
+        if: always()
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - run: npm install -g allure-commandline --unsafe-perm=true
+      - if: always()
+        run: npm install -g allure-commandline --unsafe-perm=true
 
       - name: Generate static report
-        run: allure generate allure-results -o allure-report --clean
+        if: always()
+        run: allure generate allure-results -o allure-report --clean || echo "::warning::Allure generation failed or produced empty output"
 
       - name: Deploy to GitHub Pages
+        if: always() && github.event_name == 'push' && hashFiles('allure-report/index.html') != ''
         uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.GH_PAGES_TOKEN }}
