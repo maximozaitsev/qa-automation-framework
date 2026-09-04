@@ -23,6 +23,10 @@ class TestUsersApi:
     @allure.title("GET single user returns 200 and the expected schema")
     @allure.severity(allure.severity_level.CRITICAL)
     def test_get_single_user(self, api):
+        """
+        Fetching an existing user (id=2) should return HTTP 200 with a
+        payload containing the required fields and a matching id.
+        """
         with allure.step("Request user with id=2"):
             response = api.get("/users/2")
 
@@ -36,6 +40,11 @@ class TestUsersApi:
     @allure.title("GET user list returns 200 with pagination metadata")
     @allure.severity(allure.severity_level.NORMAL)
     def test_get_user_list(self, api):
+        """
+        Fetching page=2 of the user list should return HTTP 200, contain
+        at least one user, and report pagination metadata consistent
+        with the requested page.
+        """
         with allure.step("Request the second page of users"):
             response = api.get("/users", params={"page": 2})
 

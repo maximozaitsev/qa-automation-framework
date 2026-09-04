@@ -20,6 +20,10 @@ class TestLogin:
     @allure.title("Standard user can log in and lands on the inventory page")
     @allure.severity(allure.severity_level.CRITICAL)
     def test_valid_login(self, page):
+        """
+        As a standard user, when I enter valid credentials and click Login,
+        the inventory page should be displayed.
+        """
         with allure.step("Open login page"):
             login_page = LoginPage(page).open()
 
@@ -33,6 +37,10 @@ class TestLogin:
     @allure.title("Locked-out user sees an explicit error message")
     @allure.severity(allure.severity_level.NORMAL)
     def test_locked_out_user(self, page):
+        """
+        A locked-out user should be blocked from logging in and receive
+        an error message mentioning the account is locked out.
+        """
         with allure.step("Attempt login with a locked-out account"):
             login_page = LoginPage(page).open()
             login_page.login("locked_out_user", VALID_PASSWORD)
@@ -52,6 +60,10 @@ class TestLogin:
         ],
     )
     def test_invalid_login_is_rejected(self, page, username, password):
+        """
+        Invalid credentials (wrong password, non-existent user, or empty
+        fields) must always be rejected with an error message.
+        """
         with allure.step(f"Attempt login with username='{username}'"):
             login_page = LoginPage(page).open()
             login_page.login(username, password)
