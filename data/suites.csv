@@ -1,17 +1,39 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","116","GET single user returns 200 and the expected schema","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
-"","254","GET user list returns 200 with pagination metadata","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"","94","PUT updates an existing user and returns 200","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"","616","Adding an item updates the cart badge count","tests.ui","2026-09-04","passed","2026-09-04","TestCart","test_cart","",""
+"
+        Invalid credentials (wrong password, non-existent user, or empty
+        fields) must always be rejected with an error message.
+        ","221","Invalid credentials are rejected: standard_user","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
+"","170","GET a non-existent user returns 404","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"
+        As a standard user, when I enter valid credentials and click Login,
+        the inventory page should be displayed.
+        ","276","Standard user can log in and lands on the inventory page","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
 "Deliberately broken test kept on purpose — makes the Allure report
         demonstrate how failures are visualized (stack trace + step history).
-        ","38","[DEMO] Intentional failure to showcase Allure error reporting","tests.api","2026-09-04","failed","2026-09-04","TestUsersApi","test_users_api","",""
-"","544","Adding an item updates the cart badge count","tests.ui","2026-09-04","passed","2026-09-04","TestCart","test_cart","",""
-"","264","GET a non-existent user returns 404","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
-"","312","Invalid credentials are rejected: not_a_real_user","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
-"","507","Adding two items and removing one leaves the correct count","tests.ui","2026-09-04","passed","2026-09-04","TestCart","test_cart","",""
-"","252","POST creates a new user and returns 201 with an id","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
-"","364","Standard user can log in and lands on the inventory page","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
-"","139","DELETE removes a user and returns 204","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
-"","312","Invalid credentials are rejected: standard_user","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
-"","303","Invalid credentials are rejected: ","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
-"","343","Locked-out user sees an explicit error message","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
-"","242","PUT updates an existing user and returns 200","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+        ","19","[DEMO] Intentional failure to showcase Allure error reporting","tests.api","2026-09-04","failed","2026-09-04","TestUsersApi","test_users_api","",""
+"","91","POST creates a new user and returns 201 with an id","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"
+        Fetching an existing user (id=2) should return HTTP 200 with a
+        payload containing the required fields and a matching id.
+        ","78","GET single user returns 200 and the expected schema","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"
+        Invalid credentials (wrong password, non-existent user, or empty
+        fields) must always be rejected with an error message.
+        ","224","Invalid credentials are rejected: ","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
+"","89","DELETE removes a user and returns 204","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"
+        A locked-out user should be blocked from logging in and receive
+        an error message mentioning the account is locked out.
+        ","216","Locked-out user sees an explicit error message","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
+"
+        Invalid credentials (wrong password, non-existent user, or empty
+        fields) must always be rejected with an error message.
+        ","228","Invalid credentials are rejected: not_a_real_user","tests.ui","2026-09-04","passed","2026-09-04","TestLogin","test_login","",""
+"
+        Fetching page=2 of the user list should return HTTP 200, contain
+        at least one user, and report pagination metadata consistent
+        with the requested page.
+        ","98","GET user list returns 200 with pagination metadata","tests.api","2026-09-04","passed","2026-09-04","TestUsersApi","test_users_api","",""
+"","387","Adding two items and removing one leaves the correct count","tests.ui","2026-09-04","passed","2026-09-04","TestCart","test_cart","",""
