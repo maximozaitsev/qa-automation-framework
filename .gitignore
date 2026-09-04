@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Test / coverage / reports
+.pytest_cache/
+.coverage
+htmlcov/
+.allure/
+allure-results/
+.tox/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store

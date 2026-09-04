@@ -1,6 +1,6 @@
 # QA Automation Framework — Python · Pytest · Playwright · Allure
 
-![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Playwright](https://img.shields.io/badge/Playwright-UI%20Testing-green)
 ![Pytest](https://img.shields.io/badge/Pytest-Test%20Runner-yellow)
 ![Allure](https://img.shields.io/badge/Allure-Reporting-orange)
@@ -60,7 +60,8 @@ qa-automation-framework/
 git clone https://github.com/maximozaitsev/qa-automation-framework.git
 cd qa-automation-framework
 
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+# Python 3.12 is required — pinned Playwright 1.47 / pytest-playwright 0.5.2
+python3.12 -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 playwright install chromium
 
