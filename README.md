@@ -81,7 +81,7 @@ allure serve allure-results
 
 GitHub Actions runs the full suite on every push and uploads results:
 
-- Live **Allure report** (with trend chart) → [`https://maximozaitsev.github.io/qa-automation-framework/`](https://maximozaitsev.github.io/qa-automation-framework/)
+- Live **Allure report** (✨ with trend chart) → [`https://maximozaitsev.github.io/qa-automation-framework/`](https://maximozaitsev.github.io/qa-automation-framework/)
 - `allure-results/` and `allure-html-report/` artifacts from each run are attached to the **Actions** tab.
 - Report history is cached between runs, so the **Trend chart** on the Overview page reflects every previous build.
 
