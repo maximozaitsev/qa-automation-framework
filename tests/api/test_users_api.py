@@ -102,9 +102,12 @@ class TestUsersApi:
 
     @allure.title("[DEMO] Intentional failure to showcase Allure error reporting")
     @allure.severity(allure.severity_level.MINOR)
+    @pytest.mark.skip(reason="Demonstrates an intentionally skipped test in Allure")
     def test_intentional_failure_demo(self, api):
-        """Deliberately broken test kept on purpose — makes the Allure report
+        """
+        Deliberately broken test kept on purpose — makes the Allure report
         demonstrate how failures are visualized (stack trace + step history).
+        Marked as `skip` so it never blocks CI, only shows as skipped.
         """
         with allure.step("Request a known endpoint"):
             response = api.get("/users/2")
