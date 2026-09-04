@@ -1,1 +1,1 @@
-{"reportName":"Run #14 (2026-09-04-16:10-UTC)","testRuns":[],"statistic":{"failed":1,"broken":0,"skipped":0,"passed":13,"unknown":0,"total":14},"time":{"start":1788538207981,"stop":1788538212892,"duration":4911,"minDuration":18,"maxDuration":521,"sumDuration":4092}}
+{"reportName":"Run #15 (2026-09-04-16:15-UTC)","testRuns":[],"statistic":{"failed":0,"broken":0,"skipped":1,"passed":13,"unknown":0,"total":14},"time":{"start":1788538523654,"stop":1788538527469,"duration":3815,"minDuration":0,"maxDuration":486,"sumDuration":3029}}
