@@ -1,0 +1,72 @@
+name: Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pytest -q  # warm cache so collect error fails fast
+          python -m playwright install --with-deps chromium
+
+      - name: Run tests
+        run: |
+          pytest --alluredir=allure-results --clean-alluredir
+
+      - name: Upload Allure results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results/
+          if-no-files-found: warn
+          retention-days: 14
+
+  deploy-report:
+    needs: test
+    runs-on: ubuntu-latest
+    # Only deploy on pushes to the default branch so PRs don't overwrite the live report.
+    if: github.event_name == 'push'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Allure results
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
+
+      - name: Install Node + Allure
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: npm install -g allure-commandline --unsafe-perm=true
+
+      - name: Generate static report
+        run: allure generate allure-results -o allure-report --clean
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+        # Pages must be enabled first: Settings -> Pages -> Source: GitHub Actions
